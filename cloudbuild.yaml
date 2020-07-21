@@ -1,0 +1,9 @@
+# Access the id_github file from Secret Manager
+steps:
+########################
+
+# step #0: Create docker image
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/rq-tests', '.' ]
+images:
+- 'gcr.io/$PROJECT_ID/rq-tests'
