@@ -2,8 +2,32 @@
 steps:
 ########################
 
-# step #0: Create docker image
+# build instructions for leader
 - name: 'gcr.io/cloud-builders/docker'
-  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/rq-tests', '.' ]
+  args:
+    - build
+    - "--tag=gcr.io/$PROJECT_ID/rq-tests-leader"
+    - "--file=DockerFileLeader"
+    - '.'
+
+# build instructions for follower
+- name: 'gcr.io/cloud-builders/docker'
+  args:
+    - build
+    - "--tag=gcr.io/$PROJECT_ID/rq-tests-follower"
+    - "--file=DockerFileFollower"
+    - '.'
+
+# build instructions for dashboard
+- name: 'gcr.io/cloud-builders/docker'
+  args:
+    - build
+    - "--tag=gcr.io/$PROJECT_ID/rq-tests-dash"
+    - "--file=DockerFileDash"
+    - '.'
+
+# Build images
 images:
-- 'gcr.io/$PROJECT_ID/rq-tests'
+- 'gcr.io/$PROJECT_ID/rq-tests-leader'
+- 'gcr.io/$PROJECT_ID/rq-tests-follower'
+- 'gcr.io/$PROJECT_ID/rq-tests-dash'
