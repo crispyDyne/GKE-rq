@@ -1,0 +1,18 @@
+steps:
+# build instructions for leader
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ build,"--tag=gcr.io/$PROJECT_ID/rq-tests-leader","--file=Leader.DockerFile",'.']
+
+# build instructions for follower
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ build, "--tag=gcr.io/$PROJECT_ID/rq-tests-follower","--file=Follower.DockerFile", '.']
+
+# build instructions for dashboard
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ build, "--tag=gcr.io/$PROJECT_ID/rq-tests-dash", "--file=Dash.DockerFile", '.']
+
+# Build images
+images:
+- 'gcr.io/$PROJECT_ID/rq-tests-leader'
+- 'gcr.io/$PROJECT_ID/rq-tests-follower'
+- 'gcr.io/$PROJECT_ID/rq-tests-dash'

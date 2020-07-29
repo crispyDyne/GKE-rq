@@ -5,11 +5,11 @@ import time
 from rq import Queue
 from redis import Redis
 
-import rq_dashboard
+# import rq_dashboard
 import numpy as np
 
 # Import tasks
-from tasks import emptyTask, slowTask, runFinalTask
+from tasks import  slowTask, runFinalTask
 
 # Get environment stuff (Should use container environmetn variables)
 from environment import env

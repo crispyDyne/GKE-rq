@@ -3,7 +3,7 @@ import subprocess
 import json
 
 # project settings
-projectName = 'yourProjectName' # put your project name here
+projectName = 'websim03' # put your project name here
 clusterName = 'rq-test'
 
 # Cluster Settings

@@ -1,11 +1,11 @@
 FROM python:3
 
-COPY . /app
+COPY ./src/. /app
 
 WORKDIR /app
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-ENV PORT 9181
+ENV PORT 8080
 
-CMD [ "rq-dashboard","-u", "redis://10.211.56.11:6379"]
+CMD [ "python", "app.py" ]
